@@ -31,8 +31,7 @@ from six.moves import urllib
 
 logger = logging.getLogger(__name__)
 
-_DETECTRON_S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/detectron'
-
+_DETECTRON_S3_BASE_URLS = ('https://s3-us-west-2.amazonaws.com/detectron', 'https://s3.amazonaws.com/densepose')
 
 def save_object(obj, file_name, pickle_format=2):
     """Save a Python object by pickling it.
@@ -75,11 +74,11 @@ def cache_url(url_or_file, cache_dir):
         return url_or_file
 
     url = url_or_file
-    assert url.startswith(_DETECTRON_S3_BASE_URL), \
-        ('Detectron only automatically caches URLs in the Detectron S3 '
-         'bucket: {}').format(_DETECTRON_S3_BASE_URL)
+    assert url.startswith(_DETECTRON_S3_BASE_URLS), \
+        ('Detectron only automatically caches URLs in the following Detectron S3 '
+         'buckets: {}').format(_DETECTRON_S3_BASE_URLS)
 
-    cache_file_path = url.replace(_DETECTRON_S3_BASE_URL, cache_dir)
+    cache_file_path = url.replace(_DETECTRON_S3_BASE_URLS, cache_dir)
     if os.path.exists(cache_file_path):
         assert_cache_file_is_ok(url, cache_file_path)
         return cache_file_path
