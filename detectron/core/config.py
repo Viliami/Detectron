@@ -857,6 +857,55 @@ __C.KRCNN.LOSS_WEIGHT = 1.0
 # for detailed discussion.
 __C.KRCNN.NORMALIZE_BY_VISIBLE_KEYPOINTS = True
 
+# ---------------------------------------------------------------------------- #
+# Body UV R-CNN options
+# ---------------------------------------------------------------------------- #
+__C.BODY_UV_RCNN = AttrDict()
+
+# The type of RoI head to use for body UV prediction
+__C.BODY_UV_RCNN.ROI_HEAD = ''
+
+# Output size (and size loss is computed on), e.g., 56x56
+__C.BODY_UV_RCNN.HEATMAP_SIZE = -1
+
+# Use bilinear interpolation to upsample the final heatmap by this factor
+__C.BODY_UV_RCNN.UP_SCALE = -1
+
+# Apply a ConvTranspose layer to the features prior to predicting the heatmaps
+__C.KRCNN.USE_DECONV = False
+# Channel dimension of the hidden representation produced by the ConvTranspose
+__C.BODY_UV_RCNN.DECONV_DIM = 256
+# Use a ConvTranspose layer to predict the heatmaps
+__C.BODY_UV_RCNN.USE_DECONV_OUTPUT = False
+# Use dilation in the body UV head
+__C.BODY_UV_RCNN.DILATION = 1
+# Size of the kernels to use in all ConvTranspose operations
+__C.BODY_UV_RCNN.DECONV_KERNEL = 4
+
+# Number of patches in the dataset
+__C.BODY_UV_RCNN.NUM_PATCHES = -1
+
+# Number of stacked Conv layers in body UV head
+__C.BODY_UV_RCNN.NUM_STACKED_CONVS = 8
+# Dimension of the hidden representation output by the body UV head
+__C.BODY_UV_RCNN.CONV_HEAD_DIM = 256
+# Conv kernel size used in the body UV head
+__C.BODY_UV_RCNN.CONV_HEAD_KERNEL = 3
+# Conv kernel weight filling function
+__C.BODY_UV_RCNN.CONV_INIT = 'GaussianFill'
+
+# Standard ROI XFORM options (see FAST_RCNN or MRCNN options)
+__C.BODY_UV_RCNN.ROI_XFORM_METHOD = 'RoIAlign'
+__C.BODY_UV_RCNN.ROI_XFORM_RESOLUTION = 7
+__C.BODY_UV_RCNN.ROI_XFORM_SAMPLING_RATIO = 0
+
+# Weights
+__C.BODY_UV_RCNN.INDEX_WEIGHTS = 5.0
+__C.BODY_UV_RCNN.PART_WEIGHTS = 1.0
+__C.BODY_UV_RCNN.POINT_REGRESSION_WEIGHTS = 0.001
+
+# Train only with images that have body uv annotations
+__C.BODY_UV_RCNN.BODY_UV_IMS = False
 
 # ---------------------------------------------------------------------------- #
 # R-FCN options
