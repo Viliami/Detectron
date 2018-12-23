@@ -80,8 +80,9 @@ def cache_url(url_or_file, cache_dir):
   
     cache_file_path = url
     for S3_BASE in _DETECTRON_S3_BASE_URLS:
-        cache_file_path = cache_file_path.replace(S3_BASE, cache_dir)
-        break
+        if(cache_file_path.startswith(S3_BASE)):
+            cache_file_path = cache_file_path.replace(S3_BASE, cache_dir)
+            break
         
     if os.path.exists(cache_file_path):
         assert_cache_file_is_ok(url, cache_file_path)
