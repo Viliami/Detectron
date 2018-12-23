@@ -476,6 +476,9 @@ __C.MODEL.MASK_ON = False
 # keypoints)
 __C.MODEL.KEYPOINTS_ON = False
 
+# Indicates the model makes body UV predictions (as in DensePose R-CNN)
+__C.MODEL.BODY_UV_ON = False
+
 # Indicates the model's computation terminates with the production of RPN
 # proposals (i.e., it outputs proposals ONLY, no actual object detections)
 __C.MODEL.RPN_ONLY = False
