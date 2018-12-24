@@ -20,6 +20,7 @@ endif()
 # Add compiler flags.
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O2 -fPIC -Wno-narrowing")
+set(CAFFE2_INCLUDE_DIRS "/usr/local/lib/python2.7/dist-packages/torch/lib/include")
 
 # Print configuration summary.
 include(cmake/Summary.cmake)
